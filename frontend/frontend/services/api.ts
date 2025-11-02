@@ -10,7 +10,7 @@ import type {
 } from '../types';
 
 // Base API URL - Change this to your backend URL
-VITE_API_URL='https://socialsieve-b.onrender.com';
+API_URL='https://socialsieve-b.onrender.com';
 // Create axios instance
 const api = axios.create({
   baseURL: API_URL,
