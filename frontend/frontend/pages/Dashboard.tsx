@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Mic, FileText, History, LogOut, Sparkles, ArrowRight } from 'lucide-react';
 import { authAPI } from '../services/api';
