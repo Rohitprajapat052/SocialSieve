@@ -1,54 +1,46 @@
 import React from 'react';
 
 interface LogoProps {
-  size?: number;
+  size?: 'sm' | 'md' | 'lg';
   className?: string;
 }
 
-export function Logo({ size = 40, className = '' }: LogoProps) {
+export function Logo({ size = 'md', className = '' }: LogoProps) {
+  const sizeMap = {
+    sm: 'w-6 h-6',
+    md: 'w-10 h-10',
+    lg: 'w-20 h-20',
+  };
+
   return (
     <svg
-      width={size}
-      height={size}
-      viewBox="0 0 100 100"
-      fill="none"
+      viewBox="0 0 200 200"
       xmlns="http://www.w3.org/2000/svg"
-      className={className}
+      role="img"
+      aria-label="SocialSieve logo"
+      className={`${sizeMap[size]} ${className}`}
     >
-      {/* Gradient definitions */}
       <defs>
-        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#3B82F6" />
-          <stop offset="100%" stopColor="#6366F1" />
+        <linearGradient id="ssGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#a855f7" />
+          <stop offset="100%" stopColor="#ec4899" />
         </linearGradient>
       </defs>
-      
-      {/* Filter/Sieve shape */}
-      <circle cx="50" cy="50" r="45" fill="url(#logoGradient)" opacity="0.1" />
-      
-      {/* Funnel/Sieve top */}
-      <path
-        d="M30 25 L70 25 L60 45 L40 45 Z"
-        fill="url(#logoGradient)"
-      />
-      
-      {/* Funnel middle */}
-      <path
-        d="M40 45 L60 45 L55 65 L45 65 Z"
-        fill="url(#logoGradient)"
-        opacity="0.8"
-      />
-      
-      {/* Dots representing filtered content */}
-      <circle cx="50" cy="72" r="3" fill="url(#logoGradient)" />
-      <circle cx="42" cy="77" r="2" fill="url(#logoGradient)" opacity="0.7" />
-      <circle cx="58" cy="77" r="2" fill="url(#logoGradient)" opacity="0.7" />
-      
-      {/* AI sparkle */}
-      <path
-        d="M75 20 L77 25 L82 27 L77 29 L75 34 L73 29 L68 27 L73 25 Z"
-        fill="#FBBF24"
-      />
+
+      <rect width="100%" height="100%" rx="36" fill="url(#ssGrad)" />
+
+      <text
+        x="50%"
+        y="55%"
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fontFamily="Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial"
+        fontWeight={700}
+        fontSize={110}
+        fill="#ffffff"
+      >
+        S
+      </text>
     </svg>
   );
 }

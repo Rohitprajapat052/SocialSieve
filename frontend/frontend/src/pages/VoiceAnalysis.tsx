@@ -40,7 +40,7 @@ export default function VoiceAnalysisPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white shadow-sm">
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center gap-4">
+        <div className="w-full mx-auto px-4 py-4 flex items-center gap-4">
           <button
             onClick={() => navigate('/dashboard')}
             className="p-2 hover:bg-gray-100 rounded-lg transition"
@@ -52,7 +52,7 @@ export default function VoiceAnalysisPage() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 py-8">
+      <main className="w-full mx-auto px-4 py-8">
         {/* Upload Form */}
         {!result && (
           <div className="bg-white rounded-lg shadow p-8">
@@ -62,7 +62,7 @@ export default function VoiceAnalysisPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Upload Audio File
                 </label>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-blue-500 transition">
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-purple-500 transition">
                   <input
                     type="file"
                     accept="audio/*"
@@ -94,7 +94,7 @@ export default function VoiceAnalysisPage() {
               <button
                 type="submit"
                 disabled={!file || loading}
-                className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition disabled:opacity-50 flex items-center justify-center gap-2"
+                className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <>
@@ -146,7 +146,7 @@ export default function VoiceAnalysisPage() {
                 <ul className="space-y-2">
                   {result.action_items.map((item, index) => (
                     <li key={index} className="flex items-start gap-2">
-                      <span className="text-blue-600 font-bold">•</span>
+                      <span className="text-purple-600 font-bold">•</span>
                       <span className="text-gray-700">{item}</span>
                     </li>
                   ))}
@@ -169,7 +169,7 @@ export default function VoiceAnalysisPage() {
                   setResult(null);
                   setFile(null);
                 }}
-                className="flex-1 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+                className="flex-1 bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition"
               >
                 Analyze Another
               </button>

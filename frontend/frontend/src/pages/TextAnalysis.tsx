@@ -1,4 +1,5 @@
-import React, { useState } from 'react';import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Loader } from 'lucide-react';
 import { textAPI } from '../../services/api';
 import type { TextAnalysis } from '../../types';
@@ -28,35 +29,35 @@ export default function TextAnalysisPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center gap-4">
+    <div className="min-h-screen w-full bg-gray-50">
+      {/* HEADER */}
+      <header className="w-full bg-white border-b">
+        <div className="w-full px-8 py-4 flex items-center gap-4">
           <button
             onClick={() => navigate('/dashboard')}
             className="p-2 hover:bg-gray-100 rounded-lg transition"
           >
             <ArrowLeft size={20} />
           </button>
-          <h1 className="text-2xl font-bold">Text Analysis</h1>
+          <h1 className="text-2xl">Text Analysis</h1>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="max-w-4xl mx-auto px-4 py-8">
-        {/* Input Form */}
+      {/* MAIN */}
+      <main className="w-full px-8 py-8">
+        {/* INPUT FORM */}
         {!result && (
-          <div className="bg-white rounded-lg shadow p-8">
+          <div className="bg-white rounded-lg shadow p-8 w-full">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm text-gray-700 mb-2">
                   Paste Your Text
                 </label>
                 <textarea
                   value={text}
                   onChange={(e) => setText(e.target.value)}
                   placeholder="Paste your meeting notes, email, article, or any text you want to analyze..."
-                  className="w-full h-64 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                  className="w-full h-72 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
                   required
                 />
                 <p className="text-sm text-gray-500 mt-2">
@@ -73,7 +74,7 @@ export default function TextAnalysisPage() {
               <button
                 type="submit"
                 disabled={!text.trim() || loading}
-                className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition disabled:opacity-50 flex items-center justify-center gap-2"
+                className="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition disabled:opacity-50 flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <>
@@ -88,42 +89,38 @@ export default function TextAnalysisPage() {
           </div>
         )}
 
-        {/* Results */}
+        {/* RESULTS */}
         {result && (
-          <div className="space-y-6">
-            {/* Success Message */}
+          <div className="space-y-6 w-full">
             <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <p className="text-green-800 font-medium">
+              <p className="text-green-800">
                 ✅ Analysis Complete!
               </p>
             </div>
 
-            {/* Summary */}
             <div className="bg-white rounded-lg shadow p-6">
-              <h2 className="text-lg font-semibold mb-3">Summary</h2>
+              <h2 className="text-lg mb-3">Summary</h2>
               <div className="text-gray-700 whitespace-pre-wrap">
                 {result.summary}
               </div>
             </div>
 
-            {/* Action Items */}
             {result.action_items.length > 0 && (
               <div className="bg-white rounded-lg shadow p-6">
-                <h2 className="text-lg font-semibold mb-3">Action Items</h2>
+                <h2 className="text-lg mb-3">Action Items</h2>
                 <ul className="space-y-2">
                   {result.action_items.map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <span className="text-blue-600 font-bold">•</span>
-                      <span className="text-gray-700">{item}</span>
+                    <li key={index} className="flex gap-2">
+                      <span className="text-purple-600">•</span>
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             )}
 
-            {/* Original Text */}
             <div className="bg-white rounded-lg shadow p-6">
-              <h2 className="text-lg font-semibold mb-3">Original Text</h2>
+              <h2 className="text-lg mb-3">Original Text</h2>
               <p className="text-gray-600 text-sm whitespace-pre-wrap">
                 {result.text}
               </p>
@@ -132,20 +129,20 @@ export default function TextAnalysisPage() {
               </p>
             </div>
 
-            {/* Actions */}
             <div className="flex gap-4">
               <button
                 onClick={() => {
                   setResult(null);
                   setText('');
                 }}
-                className="flex-1 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
+                className="flex-1 bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700"
               >
                 Analyze Another
               </button>
+
               <button
                 onClick={() => navigate('/history')}
-                className="flex-1 bg-gray-600 text-white py-3 rounded-lg hover:bg-gray-700 transition"
+                className="flex-1 bg-gray-600 text-white py-3 rounded-lg hover:bg-gray-700"
               >
                 View History
               </button>
